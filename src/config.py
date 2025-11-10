@@ -19,7 +19,7 @@ MODEL_NAME = "bert-base-chinese"
 PRE_TRAINED_DIR = ROOT_DIR / "pretrained"
 
 SEQ_LEN = 128 # 输入序列长度
-BATCH_SIZE = 16  #64过大会退出
+BATCH_SIZE = 64  #64过大会退出
 EMBEDDING_DIM = 128
 HIDDEN_SIZE = 256
 LEARNING_RATE = 1e-3

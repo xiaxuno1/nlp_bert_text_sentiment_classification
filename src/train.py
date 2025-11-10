@@ -16,7 +16,7 @@ def train_one_epoch(model, dataloader, loss_fn, optimizer, device):
     for batch in tqdm(dataloader, desc='训练'):
 
         inputs = {k: v.to(device) for k,v in batch.items()}
-        labels= inputs.pop('labels').to(dtype=torch.float)
+        labels= inputs.pop('label').to(dtype=torch.float)
 
         outputs = model(**inputs)
         # outputs.shape: [batch_size]
@@ -33,10 +33,11 @@ def train_one_epoch(model, dataloader, loss_fn, optimizer, device):
 def train():
     # 1. 设备
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    print('device:', device)
     # 2. 数据
     dataloader = get_dataloader()
     # 3. 分词器
-    tokenizer = AutoTokenizer.from_pretrained(config.PRE_TRAINED_DIR/'bert-base-chinese')
+    tokenizer = AutoTokenizer.from_pretrained(config.MODEL_NAME)
     # 4. 模型
     model = TextSentimentAnalyze().to(device)
     # 5. 损失函数
