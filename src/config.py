@@ -15,7 +15,8 @@ RAW_DATA_DIR = ROOT_DIR / "data" / "raw"
 PROCESSED_DATA_DIR = ROOT_DIR / "data" / "processed"
 LOGS_DIR = ROOT_DIR / "logs"
 MODELS_DIR = ROOT_DIR / "models"
-Model_Name = "bert-base-chinese"
+MODEL_NAME = "bert-base-chinese"
+PRE_TRAINED_DIR = ROOT_DIR / "pretrained"
 
 SEQ_LEN = 128 # 输入序列长度
 BATCH_SIZE = 16  #64过大会退出
