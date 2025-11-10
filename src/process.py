@@ -11,7 +11,6 @@ from datasets import load_dataset
 from transformers import AutoTokenizer
 
 from src import config
-from src.tokenizer import JiebaTokenizer
 
 
 def process():
@@ -36,7 +35,7 @@ def process():
         inputs['label'] = batch_seq['label'] #添加一列
         return inputs
     #map
-    dataset_dict = dataset.map(batch_encode,batched=True,remove_columns=['review','label'])
+    dataset_dict = dataset_dict.map(batch_encode,batched=True,remove_columns=['review','label'])
 
     #save
     dataset = dataset_dict.save_to_disk(config.PROCESSED_DATA_DIR)
