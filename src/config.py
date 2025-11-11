@@ -22,6 +22,6 @@ SEQ_LEN = 128 # 输入序列长度
 BATCH_SIZE = 64  #64过大会退出
 EMBEDDING_DIM = 128
 HIDDEN_SIZE = 256
-LEARNING_RATE = 1e-3
+LEARNING_RATE = 1e-5 #若设置为-3将无法拟合，出现过拟合
 EPOCHS = 10
 

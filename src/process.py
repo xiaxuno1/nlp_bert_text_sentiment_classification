@@ -7,7 +7,8 @@
 @date: 2025/10/23 15:20
 @desc: 处理原始的jsonl数据
 """
-from datasets import load_dataset
+from datasets import load_dataset, ClassLabel
+from jedi.inference.value.klass import ClassName
 from transformers import AutoTokenizer
 
 from src import config
@@ -23,7 +24,7 @@ def process():
     dataset = dataset.filter(lambda x:x['review'] is not None and x['review'].strip() != '')
 
     #划分测试集和数据集
-    dataset = dataset.class_encode_column('label') #转换为ClassLabel，stratify_by_column只支持此
+    dataset = dataset.cast_column('label',ClassLabel(names=['negative','positive'])) #转换为ClassLabel，stratify_by_column只支持此
     dataset_dict = dataset.train_test_split(test_size=0.2,stratify_by_column='label')
 
     #tokenizer
