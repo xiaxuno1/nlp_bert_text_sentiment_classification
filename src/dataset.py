@@ -14,7 +14,8 @@ from src import config
 
 
 def get_dataloader(train=True):
-    path = str(config.PROCESSED_DATA_DIR/ 'train' if train else 'test')
+    path = str(config.PROCESSED_DATA_DIR / ('train' if train else 'test'))
+    print(path)
     dataset = load_from_disk(path)
     dataset.set_format('torch')
     return DataLoader(dataset, batch_size=config.BATCH_SIZE, shuffle=True)

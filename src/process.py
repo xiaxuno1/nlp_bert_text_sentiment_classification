@@ -27,7 +27,7 @@ def process():
     dataset_dict = dataset.train_test_split(test_size=0.2,stratify_by_column='label')
 
     #tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(config.Model_Name)
+    tokenizer = AutoTokenizer.from_pretrained(config.MODEL_NAME)
 
     #encode
     def batch_encode(batch_seq):
